@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Early Access — Genomic Sentinel</title>
+  <meta name="description" content="Request early access to Genomic Sentinel — 200 clinical-grade genomic analyses on one intelligent platform.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      color: oklch(0.15 0.02 250);
+      background: oklch(0.97 0.002 250);
+      line-height: 1.6;
+    }
+    
+    /* Typography */
+    .font-heading { font-family: 'IBM Plex Sans', sans-serif; }
+    .font-body { font-family: 'Source Serif 4', Georgia, serif; }
+    
+    /* Colors */
+    :root {
+      --navy: #002147;
+      --teal: rgb(0, 128, 128);
+      --gold: rgb(212, 175, 55);
+      --slate: rgb(112, 128, 144);
+      --border: oklch(0.928 0.006 264.531);
+      --bg-light: oklch(0.985 0.002 247.839);
+      --bg-off-white: oklch(0.97 0.002 250);
+    }
+    
+    /* Utilities */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    
+    /* ========== NAV BAR ========== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .navbar-logo { height: 40px; width: auto; }
+    .navbar-cta {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .navbar-cta:hover { background: #003166; }
+    
+    /* ========== HERO SECTION ========== */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #001a3a 100%);
+      padding: 80px 24px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,128,128,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero h1 .line1 { color: #fff; display: block; }
+    .hero h1 .line2 { color: var(--teal); display: block; }
+    .hero-subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+    .hero-highlight {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .hero-cta:hover { background: rgb(0, 110, 110); transform: translateY(-1px); }
+    .hero-trust {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    /* ========== WHY SECTION ========== */
+    .why-section {
+      padding: 80px 24px;
+      background: var(--bg-light);
+    }
+    .section-label {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .why-section h2 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .why-section > .container > p {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 700px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,33,71,0.1);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,128,128,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .feature-icon svg { width: 24px; height: 24px; stroke: var(--teal); fill: none; stroke-width: 2; }
+    .feature-card h3 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+    
+    /* ========== SCARCITY BAR ========== */
+    .scarcity-bar {
+      background: var(--navy);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .scarcity-bar p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      color: #fff;
+    }
+    .scarcity-bar .highlight { color: var(--gold); font-weight: 700; }
+    
+    /* ========== APPLICATION FORM ========== */
+    .form-section {
+      padding: 80px 24px;
+      background: var(--bg-light);
+    }
+    .form-section h2 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .form-section > .container > p {
+      font-size: 16px;
+      color: var(--slate);
+      margin-bottom: 40px;
+    }
+    .form-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .form-group label .required { color: #ef4444; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 14px;
+      color: var(--navy);
+      background: #fff;
+      transition: all 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,128,128,0.1);
+    }
+    .form-group textarea { resize: none; min-height: 100px; }
+    .form-group select { cursor: pointer; }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #003166; }
+    .form-disclaimer {
+      font-size: 12px;
+      color: var(--slate);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    
+    /* ========== CAPABILITIES SECTION ========== */
+    .capabilities-section {
+      padding: 80px 24px;
+      background: var(--bg-off-white);
+    }
+    .capabilities-section h2 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .capabilities-section > .container > p {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+    .tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+    .tag {
+      padding: 8px 16px;
+      border: 1px solid var(--teal);
+      border-radius: 50px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--teal);
+      background: #fff;
+    }
+    .more-text {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: var(--slate);
+      margin-bottom: 32px;
+    }
+    .secondary-cta {
+      display: inline-block;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 2px solid var(--navy);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .secondary-cta:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+    
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--navy);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo { height: 32px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1); }
+    .footer-copyright {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 24px 80px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 24px; }
+      .navbar-cta { padding: 8px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV BAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="https://genomicsentinel.com">
+        <img src="https://genomicsentinel.com/GenomicSentinelLogo.png" alt="Genomic Sentinel" class="navbar-logo">
+      </a>
+      <a href="#apply" class="navbar-cta">Join the Pilot</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        ⚡ Pilot Program — Limited to 100 Researchers
+      </div>
+      <h1>
+        <span class="line1">200 Clinical-Grade Genomic Analyses.</span>
+        <span class="line2">One Intelligent Platform.</span>
+      </h1>
+      <p class="hero-subtitle">
+        We're inviting 100 genetics researchers to pilot Genomic Sentinel before it's publicly available — and tell us how it changes your research.
+      </p>
+      <p class="hero-highlight">
+        Full platform access. No cost. Your feedback shapes the future.
+      </p>
+      <a href="#apply" class="hero-cta">Join the Pilot →</a>
+      <p class="hero-trust">Only 100 spots available. Application reviewed within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- WHY SECTION -->
+  <section class="why-section">
+    <div class="container text-center">
+      <p class="section-label">THE PILOT PROGRAM</p>
+      <h2>We Built This for Researchers Like You.</h2>
+      <p>
+        Genomic Sentinel transforms static genomic reports into living, continuously updated intelligence — covering 200 clinical-grade analyses across pharmacogenomics, oncology, rare variants, multi-omics, and more. Before we open to the public, we're inviting 100 researchers to pilot the platform and tell us what they find.
+      </p>
+      
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L12 6M12 18L12 22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12L6 12M18 12L22 12M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"/>
+            </svg>
+          </div>
+          <h3>Full Platform Access</h3>
+          <p>All 200 analyses across pharmacogenomics, oncology, rare variants, epigenetics, multi-omics, and more — nothing locked or restricted.</p>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3>Exclusive Pilot Access</h3>
+          <p>Be among the first 100 researchers to test Genomic Sentinel in your lab. Run real analyses on real data with full platform capabilities.</p>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3>Your Feedback Shapes the Platform</h3>
+          <p>We're not running a passive trial. We want to hear what works, what doesn't, and what would make Genomic Sentinel indispensable to your lab.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCARCITY BAR -->
+  <section class="scarcity-bar">
+    <p>🔬 Pilot program is limited to 100 researchers. <span class="highlight">100 spots remaining.</span></p>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section id="apply" class="form-section">
+    <div class="container text-center">
+      <p class="section-label">JOIN THE PILOT</p>
+      <h2>Tell Us About Your Research</h2>
+      <p>We'll review your application and send login credentials to your email within 24 hours.</p>
+      
+      <div class="form-card">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label>Full Name <span class="required">*</span></label>
+            <input type="text" name="fullName" placeholder="Dr. Jane Smith" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="jane.smith@university.edu" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Institution or Lab Name <span class="required">*</span></label>
+            <input type="text" name="institution" placeholder="Stanford Genomics Lab" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Research Focus <span class="required">*</span></label>
+            <input type="text" name="researchFocus" placeholder="e.g., Oncogenomics, Rare Variants, Pharmacogenomics..." required>
+          </div>
+          
+          <div class="form-group">
+            <label>Your Role <span class="required">*</span></label>
+            <select name="role" required>
+              <option value="" disabled selected>Select your role...</option>
+              <option value="Principal Investigator">Principal Investigator</option>
+              <option value="Research Scientist">Research Scientist</option>
+              <option value="Postdoctoral Researcher">Postdoctoral Researcher</option>
+              <option value="PhD Student">PhD Student</option>
+              <option value="Genetic Counselor">Genetic Counselor</option>
+              <option value="Lab Director">Lab Director</option>
+              <option value="Bioinformatician">Bioinformatician</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>What do you want to use Genomic Sentinel for? <span class="required">*</span></label>
+            <textarea name="useCase" rows="4" placeholder="Describe what you're working on and how you'd apply Genomic Sentinel to your research..." required></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit">Request My Early Access Spot →</button>
+          
+          <p class="form-disclaimer">
+            By submitting, you agree to receive platform access details and occasional product updates from Genomic Sentinel. No spam. Unsubscribe anytime.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES SECTION -->
+  <section class="capabilities-section">
+    <div class="container text-center">
+      <p class="section-label">THE PLATFORM</p>
+      <h2>200 Analyses. Every Dimension of Genomic Intelligence.</h2>
+      <p>
+        Genomic Sentinel covers the full clinical and research spectrum — from core variant analysis to advanced multi-omics, pharmacogenomics, oncology, longevity, neuroscience, immunology, and beyond.
+      </p>
+      
+      <div class="tags-grid">
+        <span class="tag">Core Analysis</span>
+        <span class="tag">Pharmacogenomics</span>
+        <span class="tag">Therapy Optimization</span>
+        <span class="tag">Risk Assessment</span>
+        <span class="tag">Specialty Analysis</span>
+        <span class="tag">Organ-Specific</span>
+        <span class="tag">Lifestyle & Prevention</span>
+        <span class="tag">Advanced Multi-Omics</span>
+        <span class="tag">Resilience & Longevity</span>
+        <span class="tag">Advanced Pharmacogenomics</span>
+        <span class="tag">Organ Optimization</span>
+        <span class="tag">Advanced Metabolic</span>
+        <span class="tag">Advanced Neuroscience</span>
+        <span class="tag">Advanced Immunology</span>
+        <span class="tag">Regenerative Medicine</span>
+        <span class="tag">Precision Oncology</span>
+        <span class="tag">Advanced Compliance</span>
+      </div>
+      
+      <p class="more-text">+ 183 more analyses across every major organ system and research domain.</p>
+      
+      <a href="#apply" class="secondary-cta">Join the Pilot →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <img src="https://genomicsentinel.com/GenomicSentinelLogo.png" alt="Genomic Sentinel" class="footer-logo">
+    <p class="footer-copyright">© 2026 Genomic Sentinel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Dependencies
+nextjs_space/node_modules/
+
+# Next.js build output
+nextjs_space/.next/
+nextjs_space/out/
+
+# Environment files
+nextjs_space/.env
+nextjs_space/.env.local
+nextjs_space/.env*.local
+
+# Prisma generated
+nextjs_space/node_modules/.prisma/
+
+# Misc
+.DS_Store
+*.pem
+nextjs_space/npm-debug.log*
+nextjs_space/.vercel
+nextjs_space/tsconfig.tsbuildinfo
